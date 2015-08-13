@@ -3,7 +3,6 @@ package org.hadoop.sina.analyse;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
@@ -18,7 +17,7 @@ public class LHSinaDriver
 	///////////////////////////////////////////////////////////////////////////////
 	public static void main(String[] args) throws Exception 
 	{   
-	    if (args.length < 3) 
+	    if (args.length < 4) 
 	    {
 	        System.err.println("Usage: LHSinaDriver <in> [<in>...] <out>");
 	        System.exit(2);
@@ -50,6 +49,15 @@ public class LHSinaDriver
 	    	}
 	    }
 	    
+	    if (result)
+	    {
+	    	System.out.println("作业执行完毕");
+	    }
+	    else
+	    {
+	    	System.out.println("作业执行失败");	    	
+	    }
+
 	    System.exit(result ? 0 : 1);
 	}
 	

@@ -29,8 +29,8 @@ public class LHSinaUserModel
 	///新浪微博用户ID
 	private String mUserID;  
 	
-	///用户转发微博总数
-	private int   mForwardedNum;
+	///用户发送了一条微博
+	private final int   mSendNum = 1;
 
 	public LHSinaUserModel()
 	{
@@ -47,16 +47,12 @@ public class LHSinaUserModel
 		this.mUserID = mUserID;
 	}
 
-	public int getmForwardedNum() 
+	
+	public int getSendNum() 
 	{
-		return mForwardedNum;
+		return mSendNum;
 	}
 
-	public void setmForwardedNum(int mForwardedNum) 
-	{
-		this.mForwardedNum = mForwardedNum;
-	}
-	
 	public boolean parser(String aContent)
 	{
 		if(aContent == null || aContent.length() == 0)
@@ -68,7 +64,6 @@ public class LHSinaUserModel
 		if (items.length >= 10)
 		{
 			this.setmUserID(items[2]);
-			this.setmForwardedNum(Integer.valueOf(items[4]));
 			return true;
 		}
 		else
@@ -85,9 +80,7 @@ public class LHSinaUserModel
 		if (model.parser(testData))
 		{
 			String userID = model.getmUserID();
-			long   num    = model.getmForwardedNum();
 			System.out.println(userID);
-			System.out.println(num);
 		}
 	}
 }

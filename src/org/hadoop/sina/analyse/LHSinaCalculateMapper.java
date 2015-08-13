@@ -19,11 +19,7 @@ public class LHSinaCalculateMapper extends Mapper<Object, Text, Text, IntWritabl
 		
 		if (mModel.parser(line))
 		{
-			///当转发
-			if (mModel.getmForwardedNum() > 0)
-			{
-				context.write(new Text(mModel.getmUserID()), new IntWritable(mModel.getmForwardedNum()));            							
-			}
+		    context.write(new Text(mModel.getmUserID()), new IntWritable(mModel.getSendNum()));            							
 		}
 	}
 }
